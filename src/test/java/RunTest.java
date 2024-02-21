@@ -29,12 +29,12 @@ public class RunTest {
 
     @BeforeAll
     public static void beforeAll() {
-        System.out.println("develop Начало тестирования");
+        System.out.println("hotfix Начало тестирования");
     }
 
     @AfterAll
     public static void afterAll() {
-        System.out.println("develop Окончание тестирования");
+        System.out.println("hotfix Окончание тестирования");
     }
 
     @BeforeEach
