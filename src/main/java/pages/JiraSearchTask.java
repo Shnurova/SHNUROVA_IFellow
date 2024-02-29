@@ -12,6 +12,7 @@ public class JiraSearchTask {
     private final SelenideElement actionInWork =$x("//a[@id='action_id_21']");
     private final SelenideElement businessProcess =$x("//a[@id='opsbar-transitions_more']");
     private final SelenideElement accomplishedWork =$x("//span[text()='Выполнено']/parent::a[@role='menuitem']");
+    private final SelenideElement readyStatusVal = $x("//span[contains(@class, 'jira-issue-status') and text()='Готово']");
 
 
     public List<String> statusCheck() {
@@ -23,7 +24,11 @@ public class JiraSearchTask {
     public void changeStatus() {
         actionInWork.click();
         businessProcess.click();
-        accomplishedWork.shouldBe(Condition.visible).click();
+        accomplishedWork.click();
+    }
+
+    public String getReadyStatus() {
+        return readyStatusVal.getText();
     }
 }
 
