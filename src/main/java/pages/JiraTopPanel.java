@@ -16,7 +16,7 @@ public class JiraTopPanel {
     public void chooseProject() {
         projectDropDawn.click();
         testButton.click();
-        issuesSideItem.click();
+        issuesSideItem.shouldBe(Condition.editable).click();
     }
 
     public void searchText(String text){
