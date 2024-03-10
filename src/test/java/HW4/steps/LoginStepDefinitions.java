@@ -1,6 +1,5 @@
 package HW4.steps;
 
-import HW4.TestBase;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;

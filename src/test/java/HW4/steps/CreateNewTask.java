@@ -1,11 +1,9 @@
 package HW4.steps;
 
-import HW4.TestBase;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import org.junit.jupiter.api.Assertions;
 
-import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 public class CreateNewTask extends TestBase {

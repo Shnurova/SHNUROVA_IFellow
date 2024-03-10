@@ -1,9 +1,10 @@
-package HW4;
+package HW4.steps;
 
+import HW4.VariableContainer;
 import pages.*;
 
 public class TestBase {
-    public static  VariableContainer variableContainer = new VariableContainer();
+    public static VariableContainer variableContainer = new VariableContainer();
     public static final JiraLoginPage jiraLoginPage = new JiraLoginPage();
     public static final JiraTopPanel jiraTopPanel = new JiraTopPanel();
     public static final JiraOpenTasks jiraOpenTasks = new JiraOpenTasks();
