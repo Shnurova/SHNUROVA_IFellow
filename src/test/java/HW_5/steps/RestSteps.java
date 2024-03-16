@@ -1,11 +1,11 @@
-package HW_5.testClasses;
+package HW_5.steps;
 
 import io.restassured.response.Response;
 import HW_5.hooks.WebHooks;
 
 import static io.restassured.RestAssured.given;
 
-public class BaseTest extends WebHooks {
+public class RestSteps extends WebHooks {
     public Response getApi(String baseUri, String postUri , int statusCode){
         return given()
                 .baseUri(baseUri)

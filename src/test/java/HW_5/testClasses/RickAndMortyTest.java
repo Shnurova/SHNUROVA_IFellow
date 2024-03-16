@@ -3,9 +3,10 @@ package HW_5.testClasses;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import HW_5.steps.RestSteps;
 
 
-public class RickAndMortyTest extends BaseTest {
+public class RickAndMortyTest extends RestSteps {
     @Test
     public void matchMortyInfoTest() {
         Response characterInfo = getApi("https://rickandmortyapi.com/api/", "character/?name=morty smith&status=alive", 200);
