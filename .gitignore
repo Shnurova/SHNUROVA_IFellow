@@ -39,3 +39,8 @@ java/build/**
 
 #allure
 .allure
+
+#project
+.idea/
+build/
+target/
