@@ -9,13 +9,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import pages.*;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Objects;
 import java.util.Properties;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -39,8 +34,7 @@ public class WebHooks {
     }
 
     @BeforeEach
-//    @Step("Открытие браузера и сайта \"{config.getProperty(\"site\")}\"")
-    @Step("Открытие браузера и сайта")
+    @Step("Открытие браузера и сайта Education Jira")
     public void initBrowser() {
         SelenideLogger.addListener("AllureSelenide",
                 new AllureSelenide().screenshots(true).savePageSource(false)

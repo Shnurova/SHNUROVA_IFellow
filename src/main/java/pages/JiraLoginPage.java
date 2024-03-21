@@ -8,9 +8,9 @@ import static com.codeborne.selenide.Selenide.$x;
 
 
 public class JiraLoginPage {
-    private final SelenideElement loginFormUsername =$x("//input[@id='login-form-username']").as("Ссылка на логин");
-    private final SelenideElement loginFormPassword =$x("//input[@id='login-form-password']").as("Ссылка на пароль");
-    private final SelenideElement loginButton =$x("//input[@value='Войти']").as("Ссылка на кнопку войти");
+    private final SelenideElement loginFormUsername =$x("//input[@id='login-form-username']").as("Окно ввода логина");
+    private final SelenideElement loginFormPassword =$x("//input[@id='login-form-password']").as("Окно ввода пароля");
+    private final SelenideElement loginButton =$x("//input[@value='Войти']").as("Кнопка 'Войти'");
 
     @Step("Ввод логина и пароля")
     public void signIn(String loginText, String passwordText){

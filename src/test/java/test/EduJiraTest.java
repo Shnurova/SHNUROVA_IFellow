@@ -1,6 +1,7 @@
 package test;
 
 import hooks.WebHooks;
+import io.qameta.allure.Epic;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.List;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 @DisplayName("EduJira")
 public class EduJiraTest extends WebHooks {
 
+    @Epic(value = "EduJiraTest")
     @Test
     @DisplayName("Логирование")
     public void loginTest() {
@@ -16,6 +18,7 @@ public class EduJiraTest extends WebHooks {
         Assertions.assertTrue(jiraPageVerifier.isProfileItemDisplayed());
     }
 
+    @Epic(value = "EduJiraTest")
     @Test
     @DisplayName("Выбор проекта Test")
     public void chooseProjectTest() {
@@ -24,6 +27,7 @@ public class EduJiraTest extends WebHooks {
         Assertions.assertTrue(jiraPageVerifier.isTitleExists("Открытые задачи"));
     }
 
+    @Epic(value = "EduJiraTest")
     @Test
     @DisplayName("Проверка полей задачи TestSelenium")
     public void fieldsTaskCheckTest() {
@@ -35,6 +39,7 @@ public class EduJiraTest extends WebHooks {
         Assertions.assertEquals("Version 2.0", projectStatus.get(1));
     }
 
+    @Epic(value = "EduJiraTest")
     @Test
     @DisplayName("Создание задачи и изменение статуса")
     public void createTaskAndStatusCheck() {

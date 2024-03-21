@@ -1,6 +1,5 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
@@ -11,7 +10,7 @@ public class JiraTopPanel {
     private final SelenideElement testButton =$x("//a[@id='admin_main_proj_link_lnk']").as("Ссылка на вкладку 'Test' у 'Проекты'");
     private final SelenideElement quickSearchInput =$x("//input[@id='quickSearchInput']").as("Ссылка на 'Поиск'");
     private final SelenideElement createLink =$x("//a[@id='create_link']").as("Кнопка 'Создать'");
-    private final SelenideElement issuesSideItem = $x("//span[@title='Задачи']/parent::a[@class='aui-nav-item ']").as("Кнопка на Задач на боковой панели");
+    private final SelenideElement issuesSideItem = $x("//span[@title='Задачи']/parent::a[@class='aui-nav-item ']").as("Кнопка 'Задачи' на боковой панели");
 
 
     @Step("Открыть проект \"TEST\"")
