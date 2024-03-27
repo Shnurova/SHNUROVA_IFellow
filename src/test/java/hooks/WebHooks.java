@@ -2,16 +2,13 @@ package hooks;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import helpers.CustomAllureSelenide;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import pages.*;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
+import config.PropertiesConfig;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -23,23 +20,11 @@ public class WebHooks {
     public static final JiraPageVerifier jiraPageVerifier = new JiraPageVerifier();
     public static final JiraCreateProject jiraCreateProject = new JiraCreateProject();
 
-    public static Properties config = new Properties();
-
-    @BeforeAll
-    public static void readConfig() throws IOException {
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        try(InputStream resourceStream = loader.getResourceAsStream("not.properties")) {
-            config.load(resourceStream);
-        }
-    }
-
     @BeforeEach
     @Step("Открытие браузера и сайта Education Jira")
     public void initBrowser() {
-        SelenideLogger.addListener("AllureSelenide",
-                new AllureSelenide().screenshots(true).savePageSource(false)
-        );
-        Selenide.open(config.getProperty("site"));
+        SelenideLogger.addListener("AllureSelenide", new CustomAllureSelenide(Allure.getLifecycle()));
+        Selenide.open(PropertiesConfig.config.site());
         getWebDriver().manage().window().maximize();
     }
 

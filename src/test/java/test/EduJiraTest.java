@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
+import config.PropertiesConfig;
 
 @DisplayName("EduJira")
 public class EduJiraTest extends WebHooks {
@@ -14,7 +15,7 @@ public class EduJiraTest extends WebHooks {
     @Test
     @DisplayName("Логирование")
     public void loginTest() {
-        jiraLoginPage.signIn(config.getProperty("login"), config.getProperty("password"));
+        jiraLoginPage.signIn(PropertiesConfig.config.login(), PropertiesConfig.config.password());
         Assertions.assertTrue(jiraPageVerifier.isProfileItemDisplayed());
     }
 
@@ -22,7 +23,7 @@ public class EduJiraTest extends WebHooks {
     @Test
     @DisplayName("Выбор проекта Test")
     public void chooseProjectTest() {
-        jiraLoginPage.signIn(config.getProperty("login"), config.getProperty("password"));
+        jiraLoginPage.signIn(PropertiesConfig.config.login(), PropertiesConfig.config.password());
         jiraTopPanel.chooseProject();
         Assertions.assertTrue(jiraPageVerifier.isTitleExists("Открытые задачи"));
     }
@@ -31,7 +32,7 @@ public class EduJiraTest extends WebHooks {
     @Test
     @DisplayName("Проверка полей задачи TestSelenium")
     public void fieldsTaskCheckTest() {
-        jiraLoginPage.signIn(config.getProperty("login"), config.getProperty("password"));
+        jiraLoginPage.signIn(PropertiesConfig.config.login(), PropertiesConfig.config.password());
         jiraPageVerifier.waitSignIn();
         jiraTopPanel.searchText("TestSelenium_bug");
         List<String> projectStatus = jiraSearchTask.statusCheck();
@@ -43,14 +44,14 @@ public class EduJiraTest extends WebHooks {
     @Test
     @DisplayName("Создание задачи и изменение статуса")
     public void createTaskAndStatusCheck() {
-        jiraLoginPage.signIn(config.getProperty("login"), config.getProperty("password"));
+        jiraLoginPage.signIn(PropertiesConfig.config.login(), PropertiesConfig.config.password());
         jiraTopPanel.chooseProject();
         int taskCount = jiraOpenTasks.getTaskCount();
         jiraTopPanel.createProject();
-        jiraCreateProject.fillProjectData(config.getProperty("task_summary"), config.getProperty("task_description"));
+        jiraCreateProject.fillProjectData(PropertiesConfig.config.taskSummary(), PropertiesConfig.config.taskDescription());
         int newTaskCount = jiraOpenTasks.getTaskCount();
         Assertions.assertFalse(taskCount != newTaskCount);
-        jiraTopPanel.searchText(config.getProperty("task_summary"));
+        jiraTopPanel.searchText(PropertiesConfig.config.taskSummary());
         jiraSearchTask.changeStatus();
         String projectStatusCompleted = jiraSearchTask.getReadyStatus();
         Assertions.assertEquals("ГОТОВО", projectStatusCompleted);
