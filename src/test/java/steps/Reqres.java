@@ -1,20 +1,18 @@
 package steps;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
-import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
-import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Assertions;
 import org.json.JSONObject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import config.PropertiesConfig;
 
 public class Reqres  extends TestBase {
     @Когда("Создать POST запрос для создания пользователя")
     public void userCreationRequest() throws IOException {
-        body = new JSONObject(new String(Files.readAllBytes(Paths.get("src/test/resources/bodyData.json"))));
-        postApi("https://reqres.in", "/api/users", body.toString(), 201);
+        body = new JSONObject(new String(Files.readAllBytes(Paths.get(PropertiesConfig.config.bodyDataPath()))));
+        postApi(PropertiesConfig.config.baseUriReqres(), "/api/users", body.toString(), 201);
     }
 
     @Когда("поменять поле {string} и добавить поле {string} в Body")
@@ -25,7 +23,7 @@ public class Reqres  extends TestBase {
 
     @Когда("отправить POST запрос для изменения данных пользователя и проверить что получили ответ 201")
     public void requestToChangeUserData(){
-        response = postApi("https://reqres.in", "/api/users", body.toString(), 201);
+        response = postApi(PropertiesConfig.config.baseUriReqres(), "/api/users", body.toString(), 201);
     }
 
     @Тогда("Свериться, что полученный response имеет валидные данные по значениям key и value")
