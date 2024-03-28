@@ -7,6 +7,8 @@
 ```bash
 # Скопировать репозиторий
 $ git clone https://github.com/Shnurova/SHNUROVA_IFellow.git && cd SHNUROVA_IFellow
+# Переключить ветку
+$ gut checkout FHW_UI
 # Запуск тестов
 $ mvn clean test
 # Сгенерировать отчёт
